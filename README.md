@@ -30,28 +30,44 @@ Dependencies:
   * nodejs >= 4 LTS
   * nginx
 
-**I highly recommend to use Ubuntu 16.04 LTS.**
+**Guide to install on Ubuntu 16.04 LTS.o**
 
 First install  [go-ethereum](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu).
+
+First Install GO 1=> 1.9
+    wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
+    sudo tar -xvf go1.9.2.linux-amd64.tar.gz
+    sudo mv go /usr/local
+    export GOROOT=/usr/local/go
+    export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+    export GOPATH=$HOME/go
+
+Create new user ad hoc for the pool
 
 Clone & compile:
 
     git config --global http.https://gopkg.in.followRedirects true
-    git clone https://github.com/sammy007/open-ethereum-pool.git
-    cd open-ethereum-pool
+    git clone https://github.com/emjliano/open-dagger-pool.git
+    cd open-dagger-pool
     make
 
 Install redis-server.
 
-### Running Pool
+Install your dagger-hashimoto node (we called the executable from this "/home/dag/dagnode") 
 
-    ./build/bin/open-ethereum-pool config.json
+### Running Pool
+    /home/dag/dagnode -maxpeers 100 -rpc -rpcaddr “127.0.0.1” –rpcapi eth,net,web3 -unlock=”youretherbaseaddress″ –password=”pass”
+    ./build/bin/open-dagger-pool config.json
 
 You can use Ubuntu upstart - check for sample config in <code>upstart.conf</code>.
 
 ### Building Frontend
 
-Install nodejs. I suggest using LTS version >= 4.x from https://github.com/nodesource/distributions or from your Linux distribution or simply install nodejs on Ubuntu Xenial 16.04.
+Install nodejs and npm. I suggest using LTS version >= 4.x from https://github.com/nodesource/distributions or from your Linux distribution or simply install nodejs on Ubuntu Xenial 16.04.
+Commands:
+    apt-get install nodejs
+    apt-get install npm
+    ln -s `which nodejs` /usr/bin/node
 
 The frontend is a single-page Ember.js application that polls the pool API to render miner stats.
 
@@ -309,15 +325,13 @@ This pool is tested to work with [Ethcore's Parity](https://github.com/ethcore/p
 
 ### Credits
 
-Made by sammy007. Licensed under GPLv3.
+Mady by emjliano.
+Forked by sammy007. Licensed under GPLv3.
 
 #### Contributors
 
-[Alex Leverington](https://github.com/subtly)
-
 ### Donations
 
-ETH/ETC: 0xb85150eb365e7df0941f0cf08235f987ba91506a
 
 ![](https://cdn.pbrd.co/images/GP5tI1D.png)
 
