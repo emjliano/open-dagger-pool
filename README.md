@@ -32,9 +32,8 @@ Dependencies:
 
 **Guide to install on Ubuntu 16.04 LTS.o**
 
-First install  [go-ethereum](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu).
+First Install go 1=> 1.9
 
-First Install GO 1=> 1.9
     wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
     sudo tar -xvf go1.9.2.linux-amd64.tar.gz
     sudo mv go /usr/local
@@ -65,6 +64,7 @@ You can use Ubuntu upstart - check for sample config in <code>upstart.conf</code
 
 Install nodejs and npm. I suggest using LTS version >= 4.x from https://github.com/nodesource/distributions or from your Linux distribution or simply install nodejs on Ubuntu Xenial 16.04.
 Commands:
+
     apt-get install nodejs
     apt-get install npm
     ln -s `which nodejs` /usr/bin/node
